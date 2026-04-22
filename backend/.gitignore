@@ -1,0 +1,7 @@
+node_modules/
+.env
+.ENV
+.env*
+.ENV*
+[Ee][Nn][Vv]
+.[Ee][Nn][Vv]

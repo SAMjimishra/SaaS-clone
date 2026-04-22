@@ -103,11 +103,14 @@ const runRemoteExecutable = (cmd, args, options = {}) => {
     const remoteCmdStr = `${cleanCmd} ${args.join(' ')}`;
     logger.info(`⚡ [Remote Phase] Routing to Kali [${remoteUser}@${remoteIp}]: ${remoteCmdStr}`);
     
+    const remotePort = process.env.REMOTE_SCANNER_PORT || '22';
+    
     // Windows native 'ssh' executable
     const sshArgs = [
       '-o', 'BatchMode=yes',
       '-o', 'ConnectTimeout=10',
       '-o', 'StrictHostKeyChecking=no', // Avoid manual confirmation prompts
+      '-p', remotePort,
       `${remoteUser}@${formattedIp}`,
       remoteCmdStr
     ];

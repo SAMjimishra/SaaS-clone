@@ -7,7 +7,11 @@
 
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// Check for Vite's import.meta.env first, fallback to process.env for CRA, then localhost
+const API_BASE_URL = 
+  (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_URL) || 
+  process.env.REACT_APP_API_URL || 
+  'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
